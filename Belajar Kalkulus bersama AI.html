@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belajar Kalkulus bersama AI</title>
+<style>
+:root{--bg:#0e1322;--panel:#161d33;--line:#27304d;--text:#e8ecf7;--mute:#9aa6c6;--teal:#5eead4;--amber:#fbbf24;--rose:#fb7185;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+main{max-width:860px;margin:0 auto;padding:0 20px}
+.hero{padding:72px 0 40px}
+.hero h1{font-size:clamp(2.2rem,7vw,3.8rem);letter-spacing:-.01em}
+.hero p{color:var(--mute);max-width:60ch}
+.eq{font-family:Georgia,serif;font-size:1.15rem;color:var(--teal);margin-top:24px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+nav a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:6px 14px;border-radius:99px;font-size:.9rem}
+nav a:hover,nav a:focus-visible{border-color:var(--teal);outline:none}
+section{padding:44px 0;border-top:1px solid var(--line)}
+section h2{font-size:1.8rem}
+p.lead{color:var(--mute);max-width:65ch}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px}
+svg{width:100%;height:auto;display:block;background:#0b101d;border-radius:10px}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.ctl label{min-width:120px;color:var(--mute);font-size:.95rem}
+input[type=range]{flex:1;min-width:160px;accent-color:var(--teal)}
+.val{font-family:Georgia,serif;font-size:1.15rem;margin-top:10px}
+.val b{color:var(--amber);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:18px}
+.grid .card{margin:0}
+.grid h3{font-size:1rem;color:var(--teal)}
+.grid p{margin:0;color:var(--mute);font-size:.95rem}
+.big{font-family:Georgia,serif;font-size:1.3rem;color:var(--amber)}
+.opt{display:block;width:100%;text-align:left;background:transparent;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:8px;font:inherit;cursor:pointer}
+.opt:hover,.opt:focus-visible{border-color:var(--teal);outline:none}
+.opt.ok{border-color:var(--teal);background:#12342f}
+.opt.no{border-color:var(--rose);background:#3a1822}
+.exp{margin-top:10px;color:var(--mute);font-size:.95rem}
+.q h3{font-size:1.05rem;font-family:inherit}
+.tl{list-style:none;margin:20px 0 0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;margin-bottom:22px}
+.tl li::before{content:"";position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--teal)}
+.tl b{display:block}
+.tl span{color:var(--mute);font-size:.95rem}
+pre{white-space:pre-wrap;background:#0b101d;border:1px solid var(--line);border-radius:10px;padding:14px;color:var(--mute);font-size:.88rem;margin:10px 0 0}
+.page{display:none}.page.active{display:block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;flex-wrap:nowrap;overflow-x:auto;margin:0;padding:12px 0;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.top a{white-space:nowrap}
+nav.top a.on{background:var(--teal);color:#0e1322;border-color:var(--teal);font-weight:600}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:36px}
+.pn a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:8px 16px;border-radius:99px}
+.pn a:hover,.pn a:focus-visible{border-color:var(--teal);outline:none}
+footer{border-top:1px solid var(--line);padding:40px 0 56px;text-align:center;color:var(--mute)}
+footer .names{color:var(--text);font-family:Georgia,serif;font-size:1.1rem;margin-top:8px}
+footer small{display:block;margin-top:6px}
+</style>
+</head>
+<body>
+<main>
+<nav class="top" id="nav" aria-label="Menu halaman"></nav>
+<div class="page" id="intro">
+<header class="hero">
+<p style="color:var(--teal);margin:0 0 10px">AI Learning Assistant Project · Kelas 12</p>
+<h1>Belajar Kalkulus bersama AI</h1>
+<p>Rangkuman satu topik yang belum kami pelajari di kelas: dari limit sampai Teorema Dasar Kalkulus. Semua grafik di halaman ini bisa digeser dan dicoba sendiri.</p>
+<div class="eq">f′(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h</div>
+</header>
+
+<section>
+<h2>Apa itu kalkulus?</h2>
+<p class="lead">Bayangkan kamu naik mobil. Speedometer menunjukkan kecepatan saat ini, odometer menunjukkan jarak total. Dua alat ini adalah inti kalkulus.</p>
+<div class="grid">
+<div class="card"><h3>Turunan (diferensial)</h3><p>Dari posisi mobil, hitung kecepatan di satu detik tertentu. Mempelajari laju perubahan sesaat.</p></div>
+<div class="card"><h3>Integral</h3><p>Dari kecepatan mobil, hitung total jarak yang sudah ditempuh. Mempelajari akumulasi.</p></div>
+</div>
+<p class="lead" style="margin-top:16px">Aljabar biasa hanya memberi kecepatan rata-rata (jarak ÷ waktu). Kalkulus menjawab pertanyaan seperti “berapa kecepatan tepat pada menit ke-37?”.</p>
+</section>
+
+</div>
+<section class="page" id="limit">
+<h2>Fungsi dan limit</h2>
+<p class="lead">Fungsi adalah aturan yang memberi tepat satu keluaran untuk tiap masukan. Limit adalah nilai yang didekati f(x) saat x mendekati suatu titik, tanpa harus sampai di titik itu.</p>
+<div class="card">
+<p style="margin-top:0">Contoh: f(x) = (x² − 4)/(x − 2). Di x = 2 bentuknya 0/0 (tidak terdefinisi), tetapi geser x mendekati 2 dan lihat nilainya.</p>
+<svg id="gl" viewBox="0 0 600 300" role="img" aria-label="Grafik limit"></svg>
+<div class="ctl"><label for="sl">x = <span id="lx"></span></label><input id="sl" type="range" min="1" max="3" step="0.05" value="1.2"></div>
+<div class="val" id="lv"></div>
+</div>
+<p class="lead" style="margin-top:14px">Jika limit dari kiri dan kanan berbeda, limitnya tidak ada. Bentuk 0/0 hanyalah tanda tanya yang harus diselidiki (faktorisasi, sekawan, atau L’Hôpital).</p>
+</section>
+
+<section class="page" id="turunan">
+<h2>Turunan</h2>
+<p class="lead">Turunan adalah kemiringan garis singgung sekaligus laju perubahan sesaat. Geser titik pada kurva f(x) = x² dan lihat garis singgungnya bergerak.</p>
+<div class="card">
+<svg id="gd" viewBox="0 0 600 300" role="img" aria-label="Garis singgung"></svg>
+<div class="ctl"><label for="sd">titik x = <span id="dx"></span></label><input id="sd" type="range" min="-3" max="3" step="0.1" value="1"></div>
+<div class="val" id="dv"></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Pangkat</h3><p class="big">d/dx xⁿ = n·xⁿ⁻¹</p></div>
+<div class="card"><h3>Penjumlahan</h3><p>Turunkan satu per satu suku.</p></div>
+<div class="card"><h3>Perkalian</h3><p class="big">(fg)′ = f′g + fg′</p></div>
+<div class="card"><h3>Rantai</h3><p>Turunan luar × turunan dalam, seperti dua kali konversi mata uang.</p></div>
+</div>
+<div class="card"><h3 style="color:var(--teal)">Aplikasi turunan</h3>
+<p style="margin:0;color:var(--mute)">Tanda f′ memberi tahu grafik naik (f′ &gt; 0) atau turun (f′ &lt; 0). Titik maksimum atau minimum dicari dari f′(x) = 0, lalu diuji dengan tanda f′ atau f″ (f″ &lt; 0 maksimum, f″ &gt; 0 minimum). Turunan kedua dari posisi adalah percepatan. Jika f′ = 0 dan f″ = 0, uji turunan kedua tidak cukup, pakai uji tanda f′.</p></div>
+</section>
+
+<section class="page" id="integral">
+<h2>Integral</h2>
+<p class="lead">Integral menjumlahkan irisan yang sangat tipis menjadi total, yaitu luas di bawah kurva. Tambah jumlah persegi panjang untuk f(x) = x² dari 0 sampai 3.</p>
+<div class="card">
+<svg id="gi" viewBox="0 0 600 300" role="img" aria-label="Jumlah Riemann"></svg>
+<div class="ctl"><label for="si">irisan n = <span id="nn"></span></label><input id="si" type="range" min="1" max="60" step="1" value="4"></div>
+<div class="val" id="iv"></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Aturan pangkat</h3><p class="big">∫ xⁿ dx = xⁿ⁺¹/(n+1) + C</p></div>
+<div class="card"><h3>Integral tentu</h3><p class="big">F(b) − F(a)</p><p>Konstanta C saling menghilangkan karena hanya selisih yang dihitung.</p></div>
+<div class="card"><h3>Luas negatif</h3><p>Kurva di bawah sumbu-x berarti pengurangan akumulasi, misalnya air keluar dari tangki.</p></div>
+</div>
+</section>
+
+<section class="page" id="ftc">
+<h2>Teorema Dasar Kalkulus</h2>
+<p class="lead">Turunan dan integral adalah dua operasi yang saling berkebalikan.</p>
+<div class="grid">
+<div class="card"><h3>Bagian 1</h3><p class="big">A′(x) = f(x)</p><p>Laju bertambahnya luas akumulasi sama dengan tinggi kurva. Batas bawah tidak memengaruhi hasil turunan.</p></div>
+<div class="card"><h3>Bagian 2</h3><p class="big">∫ₐᵇ f = F(b) − F(a)</p><p>Luas dari a ke b dihitung lewat anti-turunan F.</p></div>
+</div>
+</section>
+
+<section class="page" id="kuis">
+<h2>Kuis mini</h2>
+<p class="lead">Coba jawab sendiri. Penjelasan muncul setelah kamu memilih.</p>
+<div id="quiz"></div>
+<div class="val" id="score"></div>
+</section>
+
+<section class="page" id="proses">
+<h2>Perjalanan belajar</h2>
+<p class="lead">Kami memakai Claude sebagai guru les pribadi dan Gemini untuk memverifikasi jawaban.</p>
+<ul class="tl">
+<li><b>Prompt awal</b><span>Kami membuat prompt yang berisi peran tutor, level pemula, urutan topik, gaya penjelasan, dan format ringkasan serta 3 soal latihan.</span></li>
+<li><b>Topik 1 sampai 2: Gambaran umum, fungsi, limit</b><span>Mulai dari analogi speedometer, lalu bertanya soal fungsi linear, bentuk 0/0, dan limit kiri-kanan.</span></li>
+<li><b>Topik 3: Turunan</b><span>Bertanya soal aturan rantai dan turunan kedua (percepatan).</span></li>
+<li><b>Topik 4: Integral</b><span>Bertanya kenapa + C hilang di integral tentu dan apa arti luas negatif.</span></li>
+<li><b>Topik 5: Teorema Dasar Kalkulus</b><span>Bertanya apakah batas bawah memengaruhi hasil turunan, dan peran aturan rantai.</span></li>
+<li><b>Topik 6: Aplikasi turunan</b><span>Titik stasioner, uji turunan kedua, dan optimasi.</span></li>
+<li><b>Latihan akhir</b><span>Soal ∫(12x³ − 6x² + 4x − 5) dx. Jawaban kami benar, hanya kurang + C.</span></li>
+</ul>
+<div class="card"><h3 style="color:var(--teal)">Verifikasi dengan Gemini</h3>
+<p style="margin:0 0 6px;color:var(--mute)">Penjelasan Claude tentang aplikasi turunan terlihat sangat sederhana sehingga kami ragu, jadi kami membandingkannya dengan Gemini. Hasilnya: konsep dinilai tepat, termasuk bahwa f′(x) = 0 hanya kandidat titik ekstrem dan contoh f(x) = x³ sebagai titik belok.</p></div>
+<div class="card"><h3 style="color:var(--teal)">Prompt terbaik kami</h3>
+<pre>Kamu adalah tutor matematika yang sabar dan piawai menjelaskan konsep dari nol. Tolong ajarkan saya dasar-dasar kalkulus... Mulai setiap konsep dengan analogi, lalu definisi formal, sertakan contoh langkah demi langkah, akhiri dengan ringkasan dan 3 soal latihan. Jelaskan satu topik dulu, lalu tanyakan apakah saya sudah paham.</pre>
+<p style="margin:10px 0 0;color:var(--mute)">Prompt ini efektif karena memuat peran, level kami, urutan materi, gaya penjelasan, dan format yang jelas.</p></div>
+</section>
+
+<footer>
+<div>Dibuat sebagai laporan AI Learning Assistant Project, presentasi 4 November 2026</div>
+<div class="names">Made by Cedrick Vincenzo Goni, Patricia Verlita, Albertus Adiputra Ibransjah</div>
+<small>Kelas XIIB, XIIE, XIIE</small>
+</footer>
+</main>
+
+<script>
+var NS="http://www.w3.org/2000/svg";
+function $(i){return document.getElementById(i)}
+function f2(n){return (Math.round(n*100)/100).toString().replace(".",",")}
+function axes(sx,sy,x0,x1,y0,y1){
+  var s='<line x1="'+sx(x0)+'" y1="'+sy(0)+'" x2="'+sx(x1)+'" y2="'+sy(0)+'" stroke="#3a4468"/>';
+  if(x0<0)s+='<line x1="'+sx(0)+'" y1="'+sy(y0)+'" x2="'+sx(0)+'" y2="'+sy(y1)+'" stroke="#3a4468"/>';
+  return s;
+}
+/* Limit */
+function drawL(){
+  var x=parseFloat($("sl").value);
+  var sx=function(v){return 40+v/4*520},sy=function(v){return 270-v/6*240};
+  var s=axes(sx,sy,0,4,0,6);
+  s+='<line x1="'+sx(0)+'" y1="'+sy(2)+'" x2="'+sx(4)+'" y2="'+sy(6)+'" stroke="#5eead4" stroke-width="3"/>';
+  s+='<circle cx="'+sx(2)+'" cy="'+sy(4)+'" r="6" fill="#0b101d" stroke="#5eead4" stroke-width="2"/>';
+  var y=x+2,und=Math.abs(x-2)<1e-9;
+  s+='<line x1="'+sx(x)+'" y1="'+sy(0)+'" x2="'+sx(x)+'" y2="'+sy(y)+'" stroke="#fbbf24" stroke-dasharray="4 4"/>';
+  s+='<circle cx="'+sx(x)+'" cy="'+sy(y)+'" r="'+(und?0:7)+'" fill="#fbbf24"/>';
+  s+='<text x="'+sx(2)+'" y="'+(sy(4)-14)+'" fill="#9aa6c6" font-size="14" text-anchor="middle">limit = 4</text>';
+  $("gl").innerHTML=s;
+  $("lx").textContent=f2(x);
+  $("lv").innerHTML=und?'x = 2: f(2) = 0/0, <b>tidak terdefinisi</b>, tetapi limitnya tetap <b>4</b>':'f('+f2(x)+') = <b>'+f2(y)+'</b>'+(Math.abs(x-2)<0.35?' (hampir 4)':'');
+}
+/* Derivative */
+function drawD(){
+  var a=parseFloat($("sd").value);
+  var sx=function(v){return 40+(v+4)/8*520},sy=function(v){return 270-(v+1)/11*250};
+  var s=axes(sx,sy,-4,4,-1,10),p="";
+  for(var x=-3.2;x<=3.2;x+=0.1)p+=(p?"L":"M")+sx(x).toFixed(1)+","+sy(x*x).toFixed(1);
+  s+='<path d="'+p+'" fill="none" stroke="#5eead4" stroke-width="3"/>';
+  var m=2*a,y=a*a;
+  s+='<line x1="'+sx(a-2.5)+'" y1="'+sy(y-2.5*m)+'" x2="'+sx(a+2.5)+'" y2="'+sy(y+2.5*m)+'" stroke="#fbbf24" stroke-width="2.5"/>';
+  s+='<circle cx="'+sx(a)+'" cy="'+sy(y)+'" r="7" fill="#fbbf24"/>';
+  $("gd").innerHTML=s;
+  $("dx").textContent=f2(a);
+  $("dv").innerHTML='f(x) = x², f′(x) = 2x. Di x = '+f2(a)+', kemiringan = <b>'+f2(m)+'</b>'+(Math.abs(m)<0.01?' (datar, titik minimum)':m>0?' (grafik naik)':' (grafik turun)');
+}
+/* Integral */
+function drawI(){
+  var n=parseInt($("si").value);
+  var sx=function(v){return 40+v/3.5*520},sy=function(v){return 270-v/10*250};
+  var s=axes(sx,sy,0,3.5,0,10),sum=0,w=3/n;
+  for(var i=0;i<n;i++){var xi=i*w,h=xi*xi;sum+=h*w;
+    s+='<rect x="'+sx(xi)+'" y="'+sy(h)+'" width="'+Math.max(sx(w)-sx(0)-0.6,0.5)+'" height="'+(sy(0)-sy(h))+'" fill="#fbbf24" fill-opacity=".35" stroke="#fbbf24" stroke-width=".6"/>';}
+  var p="";for(var x=0;x<=3.2;x+=0.05)p+=(p?"L":"M")+sx(x).toFixed(1)+","+sy(x*x).toFixed(1);
+  s+='<path d="'+p+'" fill="none" stroke="#5eead4" stroke-width="3"/>';
+  $("gi").innerHTML=s;
+  $("nn").textContent=n;
+  $("iv").innerHTML='Jumlah luas persegi panjang = <b>'+f2(sum)+'</b>. Luas sebenarnya ∫₀³ x² dx = [x³/3]₀³ = <b>9</b>';
+}
+["sl","sd","si"].forEach(function(id,k){$(id).addEventListener("input",[drawL,drawD,drawI][k])});
+drawL();drawD();drawI();
+
+/* Halaman */
+var P=["intro","limit","turunan","integral","ftc","kuis","proses"],T=["Apa itu kalkulus","Limit","Turunan","Integral","Teorema Dasar","Kuis","Proses belajar"];
+var nv=$("nav");
+nv.innerHTML=P.map(function(p,i){return '<a href="#'+p+'" data-p="'+p+'">'+T[i]+'</a>'}).join("");
+P.forEach(function(p,i){
+  var h='<div class="pn">'+(i>0?'<a href="#'+P[i-1]+'">‹ '+T[i-1]+'</a>':'<span></span>')+(i<P.length-1?'<a href="#'+P[i+1]+'">'+T[i+1]+' ›</a>':'')+'</div>';
+  $(p).insertAdjacentHTML("beforeend",h);
+});
+function route(){
+  var h=location.hash.slice(1);if(P.indexOf(h)<0)h="intro";
+  P.forEach(function(p){$(p).classList.toggle("active",p===h)});
+  [].forEach.call(nv.children,function(a){var on=a.dataset.p===h;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+
+/* Quiz */
+var Q=[
+ {q:"Berapa turunan dari f(x) = x³?",o:["x²","3x²","3x³","x⁴/4"],a:1,e:"Aturan pangkat: n·xⁿ⁻¹ = 3x²."},
+ {q:"Berapa limit dari (x² − 4)/(x − 2) saat x → 2?",o:["0","2","4","Tidak ada"],a:2,e:"Faktorkan: (x−2)(x+2)/(x−2) = x + 2, jadi limitnya 4."},
+ {q:"Hitung ∫(12x³ − 6x² + 4x − 5) dx.",o:["3x⁴ − 2x³ + 2x² − 5x + C","36x² − 12x + 4 + C","3x⁴ − 2x³ + 2x² − 5x","12x⁴ − 6x³ + 4x² − 5x + C"],a:0,e:"Naikkan pangkat lalu bagi pangkat baru per suku. Jangan lupa + C pada integral tak tentu. Hasilnya bisa dicek dengan menurunkannya kembali."},
+ {q:"Turunan dari (2x + 1)³ adalah...",o:["3(2x + 1)²","6(2x + 1)²","2(2x + 1)³","6x²"],a:1,e:"Aturan rantai: turunan luar 3(2x+1)² dikali turunan dalam 2 = 6(2x+1)²."},
+ {q:"Turunan kedua dari fungsi posisi adalah...",o:["Kecepatan","Percepatan","Jarak total","Luas"],a:1,e:"Turunan pertama posisi adalah kecepatan, turunan keduanya percepatan."}
+];
+var done=0,right=0;
+var qb=$("quiz");
+Q.forEach(function(it,qi){
+  var d=document.createElement("div");d.className="card q";
+  d.innerHTML="<h3>"+(qi+1)+". "+it.q+"</h3>";
+  var ex=document.createElement("div");ex.className="exp";
+  var btns=[];
+  it.o.forEach(function(t,oi){
+    var b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=function(){
+      if(d.dataset.done)return;d.dataset.done=1;done++;
+      if(oi===it.a){b.classList.add("ok");right++}else{b.classList.add("no");btns[it.a].classList.add("ok")}
+      ex.textContent=(oi===it.a?"Benar. ":"Belum tepat. ")+it.e;
+      if(done===Q.length)$("score").innerHTML="Skor kamu: <b>"+right+" / "+Q.length+"</b>";
+    };
+    btns.push(b);d.appendChild(b);
+  });
+  d.appendChild(ex);qb.appendChild(d);
+});
+</script>
+</body>
+</html>
